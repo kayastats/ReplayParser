@@ -1,0 +1,8 @@
+target
+.settings
+.classpath
+.project
+.idea
+*.log
+*.dem
+*.bz2
