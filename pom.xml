@@ -7,6 +7,7 @@
     <groupId>com.kayastats</groupId>
     <artifactId>ReplayParser</artifactId>
     <version>0.1.0</version>
+    <packaging>jar</packaging>
 <!--
     <developers>
         <developer>
@@ -35,5 +36,40 @@
             <version>2.3.1</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>kayastats.Main</mainClass>
+                                </transformer>
+                                <transformer implementation="org.atteo.classindex.ClassIndexTransformer" />
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.atteo.classindex</groupId>
+                        <artifactId>classindex-transformer</artifactId>
+                        <version>3.4</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+    <name>kayastats-ReplayParser</name>
 
 </project>
