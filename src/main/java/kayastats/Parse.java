@@ -348,6 +348,7 @@ public class Parse {
                 // int currGameStartTime = Math.round( (float) grp.getProperty("m_pGameRules.m_flGameStartTime"));
                 if (gameStartTime == 0) {
                     gameStartTime = combatLogEntry.time;
+                    nextInterval = gameStartTime + 60;
                     //flushLogBuffer();
                 }
             }
