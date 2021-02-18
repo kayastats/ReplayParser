@@ -376,6 +376,7 @@ public class Parse {
         Entity pr = ctx.getProcessor(Entities.class).getByDtName("CDOTA_PlayerResource");
         Entity dData = ctx.getProcessor(Entities.class).getByDtName("CDOTA_DataDire");
         Entity rData = ctx.getProcessor(Entities.class).getByDtName("CDOTA_DataRadiant");
+        Entity spectatorData = ctx.getProcessor(Entities.class).getByDtName("CDOTA_DataSpectator");
 
         // Create draftStage variable
         Integer draftStage = getEntityProperty(grp, "m_pGameRules.m_nGameState", null);
@@ -460,7 +461,7 @@ public class Parse {
 
                     if (teamSlot >= 0)
                     {
-                        entry.gold = getEntityProperty(dataTeam, "m_vecDataTeam.%i.m_iTotalEarnedGold", teamSlot);
+                        entry.gold = getEntityProperty(spectatorData, "m_iNetWorth.%i", validIndices[i]);
                         entry.lh = getEntityProperty(dataTeam, "m_vecDataTeam.%i.m_iLastHitCount", teamSlot);
                         entry.xp = getEntityProperty(dataTeam, "m_vecDataTeam.%i.m_iTotalEarnedXP", teamSlot);
                         entry.stuns = getEntityProperty(dataTeam, "m_vecDataTeam.%i.m_fStuns", teamSlot);
@@ -503,7 +504,7 @@ public class Parse {
 
                     if (entry.slot == 0) {
                         stats.player_r1_hero_id = entry.hero_id;
-                        stats.player_r1_net_worth = entry.gold; // TODO: check if it is correct
+                        stats.player_r1_net_worth = entry.gold;
                         stats.player_r1_experience = entry.xp;
                         stats.player_r1_kills = entry.kills;
                         stats.player_r1_deaths = entry.deaths;
@@ -520,7 +521,7 @@ public class Parse {
                     }
                     if (entry.slot == 1) {
                         stats.player_r2_hero_id = entry.hero_id;
-                        stats.player_r2_net_worth = entry.gold; // TODO: check if it is correct
+                        stats.player_r2_net_worth = entry.gold;
                         stats.player_r2_experience = entry.xp;
                         stats.player_r2_kills = entry.kills;
                         stats.player_r2_deaths = entry.deaths;
@@ -537,7 +538,7 @@ public class Parse {
                     }
                     if (entry.slot == 2) {
                         stats.player_r3_hero_id = entry.hero_id;
-                        stats.player_r3_net_worth = entry.gold; // TODO: check if it is correct
+                        stats.player_r3_net_worth = entry.gold;
                         stats.player_r3_experience = entry.xp;
                         stats.player_r3_kills = entry.kills;
                         stats.player_r3_deaths = entry.deaths;
@@ -554,7 +555,7 @@ public class Parse {
                     }
                     if (entry.slot == 3) {
                         stats.player_r4_hero_id = entry.hero_id;
-                        stats.player_r4_net_worth = entry.gold; // TODO: check if it is correct
+                        stats.player_r4_net_worth = entry.gold;
                         stats.player_r4_experience = entry.xp;
                         stats.player_r4_kills = entry.kills;
                         stats.player_r4_deaths = entry.deaths;
@@ -571,7 +572,7 @@ public class Parse {
                     }
                     if (entry.slot == 4) {
                         stats.player_r5_hero_id = entry.hero_id;
-                        stats.player_r5_net_worth = entry.gold; // TODO: check if it is correct
+                        stats.player_r5_net_worth = entry.gold;
                         stats.player_r5_experience = entry.xp;
                         stats.player_r5_kills = entry.kills;
                         stats.player_r5_deaths = entry.deaths;
@@ -588,7 +589,7 @@ public class Parse {
                     }
                     if (entry.slot == 5) {
                         stats.player_d1_hero_id = entry.hero_id;
-                        stats.player_d1_net_worth = entry.gold; // TODO: check if it is correct
+                        stats.player_d1_net_worth = entry.gold;
                         stats.player_d1_experience = entry.xp;
                         stats.player_d1_kills = entry.kills;
                         stats.player_d1_deaths = entry.deaths;
@@ -605,7 +606,7 @@ public class Parse {
                     }
                     if (entry.slot == 6) {
                         stats.player_d2_hero_id = entry.hero_id;
-                        stats.player_d2_net_worth = entry.gold; // TODO: check if it is correct
+                        stats.player_d2_net_worth = entry.gold;
                         stats.player_d2_experience = entry.xp;
                         stats.player_d2_kills = entry.kills;
                         stats.player_d2_deaths = entry.deaths;
@@ -622,7 +623,7 @@ public class Parse {
                     }
                     if (entry.slot == 7) {
                         stats.player_d3_hero_id = entry.hero_id;
-                        stats.player_d3_net_worth = entry.gold; // TODO: check if it is correct
+                        stats.player_d3_net_worth = entry.gold;
                         stats.player_d3_experience = entry.xp;
                         stats.player_d3_kills = entry.kills;
                         stats.player_d3_deaths = entry.deaths;
@@ -639,7 +640,7 @@ public class Parse {
                     }
                     if (entry.slot == 8) {
                         stats.player_d4_hero_id = entry.hero_id;
-                        stats.player_d4_net_worth = entry.gold; // TODO: check if it is correct
+                        stats.player_d4_net_worth = entry.gold;
                         stats.player_d4_experience = entry.xp;
                         stats.player_d4_kills = entry.kills;
                         stats.player_d4_deaths = entry.deaths;
@@ -656,7 +657,7 @@ public class Parse {
                     }
                     if (entry.slot == 9) {
                         stats.player_d5_hero_id = entry.hero_id;
-                        stats.player_d5_net_worth = entry.gold; // TODO: check if it is correct
+                        stats.player_d5_net_worth = entry.gold;
                         stats.player_d5_experience = entry.xp;
                         stats.player_d5_kills = entry.kills;
                         stats.player_d5_deaths = entry.deaths;
